@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ContactItem from 'components/ContactsItem/ContactsItem';
 import s from './ContactsList.module.css';
 
@@ -17,5 +18,9 @@ const ContactsList = ({ contacts }) => {
     </ul>
   );
 };
+
+ContactsList.propTypes = {
+  contacts: PropTypes.array,
+}
 
 export default ContactsList;

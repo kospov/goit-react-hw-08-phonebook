@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './ContactsItem.module.css';
 
 const ContactItem = ({ name, id, number }) => {
@@ -10,6 +11,12 @@ const ContactItem = ({ name, id, number }) => {
       </p>
     </li>
   );
+};
+
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
 
 export default ContactItem;

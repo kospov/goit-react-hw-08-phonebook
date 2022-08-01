@@ -21,12 +21,14 @@ class App extends Component {
     const contactName = form.elements.name.value;
     const contactPhone = form.elements.number.value;
 
-    this.setState(prev => ({
-      contacts: [
-        ...prev.contacts,
-        { name: contactName, id: nanoid(), number: contactPhone },
-      ],
-    }));
+    this.state.contacts.find(el => el.name === contactName)
+      ? alert(contactName + ' is already in contacts.')
+      : this.setState(prev => ({
+          contacts: [
+            ...prev.contacts,
+            { name: contactName, id: nanoid(), number: contactPhone },
+          ],
+        }));
 
     form.reset();
   };

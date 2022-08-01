@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
 
 const ContactForm  = ({ handleSubmitClick }) => {
@@ -29,5 +30,9 @@ const ContactForm  = ({ handleSubmitClick }) => {
     </>
   );
 };
+
+ContactForm.propTypes = {
+  handleSubmitClick: PropTypes.func,
+}
 
 export default ContactForm;
