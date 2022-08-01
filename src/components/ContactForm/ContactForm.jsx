@@ -1,9 +1,8 @@
-import s from './Phopnebook.module.css';
+import s from './ContactForm.module.css';
 
-const Phonebook = ({ handleSubmitClick }) => {
+const ContactForm  = ({ handleSubmitClick }) => {
   return (
     <>
-      <h2 className={s.title}>Phonebook</h2>
       <form className={s.form} onSubmit={handleSubmitClick}>
         <label className={s.formLabel}>Name</label>
         <input
@@ -31,4 +30,4 @@ const Phonebook = ({ handleSubmitClick }) => {
   );
 };
 
-export default Phonebook;
+export default ContactForm;

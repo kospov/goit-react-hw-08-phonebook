@@ -1,16 +1,8 @@
-.title {
-    margin-bottom: 20px;
-
-    font-size: 32px;
-    font-weight: 700;
-}
-
 .form {
     display: flex;
     flex-direction: column;
     width: 380px;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 10px 10px 20px 10px;
     
     border: 1px solid #000;
 }
@@ -18,7 +10,7 @@
 .formLabel {
     margin-bottom: 10px;
 
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
 }
 

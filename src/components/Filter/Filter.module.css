@@ -1,0 +1,12 @@
+.formLabel {
+    padding-bottom: 10px;
+
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.formInput {
+    width: 360px;
+
+    font-size: 16px;
+}
