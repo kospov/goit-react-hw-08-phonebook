@@ -1,8 +1,33 @@
 .item {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
     margin-bottom: 10px;
-       
+       list-style-type: circle;
 }
 
 .name {
     font-size: 20px;
+}
+
+.btnDelete {
+    width: fit-content;
+    padding: 4px 8px;
+
+    font-size: 14px;
+
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+    background-color: #fff;
+    transition: background-color 500ms linear,
+}
+
+.btnDelete:hover,
+.btnDelete:focus
+ {
+    background-color:dodgerblue;
 }

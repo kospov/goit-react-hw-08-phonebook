@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import ContactItem from 'components/ContactsItem/ContactsItem';
 import s from './ContactsList.module.css';
 
-const ContactsList = ({ contacts }) => {
+const ContactsList = ({ contacts, removeContact}) => {
   return (
     <ul className={s.list}>
       {contacts.map(el => {
@@ -12,6 +12,7 @@ const ContactsList = ({ contacts }) => {
             name={el.name}
             id={el.id}
             number={el.number}
+            removeContact={removeContact}
           />
         );
       })}
@@ -21,6 +22,7 @@ const ContactsList = ({ contacts }) => {
 
 ContactsList.propTypes = {
   contacts: PropTypes.array,
+  removeContact: PropTypes.func,
 }
 
 export default ContactsList;
