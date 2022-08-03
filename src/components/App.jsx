@@ -16,6 +16,22 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+
+    if (!contacts) return;
+
+    this.setState({ contacts });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  };
+
   handleChange = e => {
     this.setState({ filter: e.target.value });
   };
@@ -36,22 +52,6 @@ class App extends Component {
           contacts: [...prev.contacts, { ...formData, id: nanoid() }],
         }));
   };
-
-  componentDidMount() {
-    const contacts = JSON.parse(localStorage.getItem('contacts'));
-
-    if (!contacts) return;
-
-    this.setState({ contacts});
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { contacts } = this.state;
-    
-    if (contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(contacts))
-    }
-  }
 
   render() {
     const { contacts, filter } = this.state;
