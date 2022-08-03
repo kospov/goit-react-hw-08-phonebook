@@ -42,13 +42,14 @@ class App extends Component {
 
     if (!contacts) return;
 
-    this.setState({ contacts: contacts });
+    this.setState({ contacts});
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
     
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts))
     }
   }
 
