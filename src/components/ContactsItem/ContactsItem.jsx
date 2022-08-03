@@ -9,7 +9,7 @@ const ContactItem = ({ name, id, number, removeContact }) => {
         <span>: </span>
         <span className={s.phone}>{number}</span>
       </p>
-      <button id={id} type='button' className={s.btnDelete} onClick={ removeContact}>Delete</button>
+      <button id={id} type='button' className={s.btnDelete} onClick={() => removeContact(id)}>Delete</button>
     </li>
   );
 };

@@ -20,11 +20,9 @@ class App extends Component {
     this.setState({ filter: e.target.value });
   };
 
-  removeContact = e => {
-    const { contacts } = this.state;
-    const contact = e.currentTarget;
-    this.setState(prev => ({
-      contacts: contacts.filter(el => el.id !== contact.id)
+  removeContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(el => el.id !== id)
     }));
   }
 
@@ -36,7 +34,7 @@ class App extends Component {
       : this.setState(prev => ({
         contacts: [
           ...prev.contacts,
-          { name: formData.name, id: nanoid(), number: formData.number },
+          { ...formData, id: nanoid()},
         ],
       }))
     )  
