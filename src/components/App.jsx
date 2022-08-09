@@ -5,7 +5,9 @@ import Filter from './Filter/Filter';
 import ContactsList from './ContactsList/ContactsList';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    JSON.parse(localStorage.getItem('contacts')) ?? []
+  );
   const [filter, setFilter] = useState('');
 
   useEffect(
@@ -14,7 +16,7 @@ const App = () => {
   );
 
   useEffect(
-    () => localStorage.setItem('contacts', JSON.stringify(contacts)),
+    () => window.localStorage.setItem('contacts', JSON.stringify(contacts)),
     [contacts]
   );
 

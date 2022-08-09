@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import s from './ContactForm.module.css';
@@ -65,6 +66,10 @@ const ContactForm = ({ handleFormSubmit }) => {
       </form>
     </>
   );
+};
+
+ContactForm.propTypes = {
+  handleFormSubmit: PropTypes.func,
 };
 
 export default ContactForm;
