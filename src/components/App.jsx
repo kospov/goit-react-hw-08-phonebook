@@ -5,15 +5,10 @@ import Filter from './Filter/Filter';
 import ContactsList from './ContactsList/ContactsList';
 
 const App = () => {
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem('contacts')) ?? []
-  );
+  const [contacts, setContacts] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
+  });
   const [filter, setFilter] = useState('');
-
-  useEffect(
-    () => setContacts(JSON.parse(localStorage.getItem('contacts'))),
-    []
-  );
 
   useEffect(
     () => window.localStorage.setItem('contacts', JSON.stringify(contacts)),
