@@ -6,17 +6,6 @@ import s from './ContactForm.module.css';
 const ContactForm = ({ handleFormSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // const [id, setId] = useState('');
-
-  // const handleChangeNameInput = e => {
-  //   const { value } = e.target;
-  //   return setName(value);
-  // };
-
-  // const handleChangeNumberInput = e => {
-  //   const { value } = e.target;
-  //   return setNumber(value);
-  // };
 
   const handleChangeInput = e => {
     const { name, value } = e.target;
