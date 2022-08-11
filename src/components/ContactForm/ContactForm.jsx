@@ -6,22 +6,36 @@ import s from './ContactForm.module.css';
 const ContactForm = ({ handleFormSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [id, setId] = useState('');
+  // const [id, setId] = useState('');
 
-  const handleChangeNameInput = e => {
-    const { value } = e.target;
-    return setName(value);
-  };
+  // const handleChangeNameInput = e => {
+  //   const { value } = e.target;
+  //   return setName(value);
+  // };
 
-  const handleChangeNumberInput = e => {
-    const { value } = e.target;
-    return setNumber(value);
+  // const handleChangeNumberInput = e => {
+  //   const { value } = e.target;
+  //   return setNumber(value);
+  // };
+
+  const handleChangeInput = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSubmitClick = e => {
     e.preventDefault();
 
-    setId(nanoid());
+    const id = nanoid();
 
     handleFormSubmit({ name, number, id });
 
@@ -45,7 +59,7 @@ const ContactForm = ({ handleFormSubmit }) => {
           required
           className={s.formInput}
           value={name}
-          onChange={handleChangeNameInput}
+          onChange={handleChangeInput}
         />
 
         <label className={s.formLabel}>Number</label>
@@ -57,7 +71,7 @@ const ContactForm = ({ handleFormSubmit }) => {
           required
           className={s.formInput}
           value={number}
-          onChange={handleChangeNumberInput}
+          onChange={handleChangeInput}
         />
 
         <button type="submit" className={s.formBtn}>
