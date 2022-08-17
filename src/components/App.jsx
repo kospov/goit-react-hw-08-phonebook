@@ -1,41 +1,29 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Container from './Container/Container';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactsList from './ContactsList/ContactsList';
 
 const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
-  });
-  // const [filter, setFilter] = useState('');
+  // const [contacts, setContacts] = useState(() => {
+  //   return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
+  // });
 
-  useEffect(
-    () => window.localStorage.setItem('contacts', JSON.stringify(contacts)),
-    [contacts]
-  );
-
-  // const handleChange = e => {
-  //   setFilter(e.target.value);
-  // };
-
-  const handleFormSubmit = ({ name, number, id }) => {
-    return contacts.find(el => el.name.toLowerCase() === name.toLowerCase())
-      ? alert(name + ' is already in contacts.')
-      : setContacts(prev => [...prev, { name, number, id }]);
-  };
-
-  // const normalizeContactName = filter.toLowerCase();
-
-  // const filteredContacesList = contacts.filter(el =>
-  //   el.name.toLowerCase().includes(normalizeContactName)
+  // useEffect(
+  //   () => window.localStorage.setItem('contacts', JSON.stringify(contacts)),
+  //   [contacts]
   // );
+
+  // const handleFormSubmit = ({ name, number, id }) => {
+  //   return contacts.find(el => el.name.toLowerCase() === name.toLowerCase())
+  //     ? alert(name + ' is already in contacts.')
+  //     : setContacts(prev => [...prev, { name, number, id }]);
+  // };
 
   return (
     <Container>
       <h1>Phonebook</h1>
-      <ContactForm handleFormSubmit={handleFormSubmit} />
-
+      <ContactForm />
       <h2>Contacts</h2>
       <Filter />
       <ContactsList />
