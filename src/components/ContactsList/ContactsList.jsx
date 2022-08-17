@@ -3,7 +3,15 @@ import ContactItem from '../ContactsItem/ContactsItem';
 import s from './ContactsList.module.css';
 
 const ContactsList = () => {
-  const contacts = useSelector(state => state.item);
+  const items = useSelector(state => state.items);
+  const filter = useSelector(state => state.filter);
+
+  const contacts =
+    filter === ''
+      ? items
+      : items.filter(el =>
+          el.name.toLowerCase().includes(filter.toLowerCase())
+        );
 
   return (
     <ul className={s.list}>

@@ -1,14 +1,9 @@
-import { actionType } from './itemsAction.js';
+import { createReducer } from '@reduxjs/toolkit';
+import { addItem, removeItem } from './itemsAction.js';
 
-const itemsReduser = (state = [], { type, payload }) => {
-  switch (type) {
-    case actionType.ADD_ITEM:
-      return [...state, payload];
-    case actionType.REMOVE_ITEM:
-      return state.filter(el => el.id !== payload);
-    default:
-      return state;
-  }
-};
+const itemsReduser = createReducer([], {
+  [addItem]: (state, action) => [...state, action.payload],
+  [removeItem]: (state, action) => state.filter(el => el.id !== action.payload),
+});
 
 export default itemsReduser;

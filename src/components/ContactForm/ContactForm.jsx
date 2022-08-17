@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addItem } from 'redux/items/itemsAction';
+import { addItem } from '../../redux/items/itemsAction';
 import s from './ContactForm.module.css';
 
 const ContactForm = ({ handleFormSubmit }) => {

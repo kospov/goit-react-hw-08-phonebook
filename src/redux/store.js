@@ -1,11 +1,11 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
+import { configureStore } from '@reduxjs/toolkit';
 import filter from '../redux/filter/filterReducer';
-import item from '../redux/items/itemsReduser';
+import items from '../redux/items/itemsReduser';
 
-const rootReducer = combineReducers({
-  filter,
-  item,
+export const store = configureStore({
+  reducer: {
+    items,
+    filter,
+  },
+  //   devTools: process.env.NODE_ENV !== 'production',
 });
-
-export const store = createStore(rootReducer, composeWithDevTools());
