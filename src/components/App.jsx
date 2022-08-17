@@ -1,19 +1,9 @@
-// import { useState, useEffect } from 'react';
 import Container from './Container/Container';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactsList from './ContactsList/ContactsList';
 
 const App = () => {
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
-  // });
-
-  // useEffect(
-  //   () => window.localStorage.setItem('contacts', JSON.stringify(contacts)),
-  //   [contacts]
-  // );
-
   // const handleFormSubmit = ({ name, number, id }) => {
   //   return contacts.find(el => el.name.toLowerCase() === name.toLowerCase())
   //     ? alert(name + ' is already in contacts.')

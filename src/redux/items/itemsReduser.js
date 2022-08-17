@@ -7,13 +7,14 @@ const getContactsFromLs = () =>
   JSON.parse(window.localStorage.getItem('contacts'));
 
 const itemsReduser = createReducer(getContactsFromLs() || [], {
-  [addItem]: (state, action) => {
-    const contacts = [...state, action.payload];
-    setContactsToLs(contacts);
-    return contacts;
+  [addItem]: (state, { payload }) => {
+    const contact = [...state, payload];
+    setContactsToLs(contact);
+    return contact;
   },
-  [removeItem]: (state, action) => {
-    const contacts = state.filter(el => el.id !== action.payload);
+
+  [removeItem]: (state, { payload }) => {
+    const contacts = state.filter(el => el.id !== payload);
     setContactsToLs(contacts);
     return contacts;
   },
