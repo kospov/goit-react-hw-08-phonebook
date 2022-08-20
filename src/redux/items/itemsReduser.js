@@ -1,44 +1,34 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
-import {
-  getItemRequest,
-  getItemSuccess,
-  getItemError,
-  addItemRequest,
-  addItemSuccess,
-  addItemError,
-  removeItemRequest,
-  removeItemSuccess,
-  removeItemError,
-} from './itemsAction.js';
+import { getItem, addItem, removeItem } from './itemsOperation.js';
 
 const itemsReduser = createReducer([], {
-  [getItemSuccess]: (_, { payload }) => payload,
-  [addItemSuccess]: (state, { payload }) => [...state, payload],
-  [removeItemSuccess]: (state, { payload }) =>
+  [getItem.fulfilled]: (_, { payload }) => payload,
+  [addItem.fulfilled]: (state, { payload }) => [...state, payload],
+  [removeItem.fulfilled]: (state, { payload }) =>
     state.filter(el => el.id !== payload),
 });
 
 const isLoadingReducer = createReducer(false, {
-  [getItemRequest]: () => true,
-  [getItemSuccess]: () => false,
-  [getItemError]: () => false,
-  [addItemRequest]: () => true,
-  [addItemSuccess]: () => false,
-  [addItemError]: () => false,
-  [removeItemRequest]: () => true,
-  [removeItemSuccess]: () => false,
-  [removeItemError]: () => false,
+  [getItem.pending]: () => true,
+  [getItem.fulfilled]: () => false,
+  [getItem.rejected]: () => false,
+  [addItem.pending]: () => true,
+  [addItem.fulfilled]: () => false,
+  [addItem.rejected]: () => false,
+  [removeItem.pending]: () => true,
+  [removeItem.fulfilled]: () => false,
+  [removeItem.rejected]: () => false,
 });
 
 const setErr = (_, { payload }) => payload;
 
 const errorReducer = createReducer(null, {
-  [getItemError]: setErr,
-  [getItemRequest]: () => null,
-  [addItemError]: setErr,
-  [addItemRequest]: () => null,
-  [removeItemError]: setErr,
-  [removeItemRequest]: () => null,
+  [getItem.rejected]: setErr,
+  [getItem.pending]: () => null,
+  [addItem.rejected]: setErr,
+  [addItem.pending]: () => null,
+  [removeItem.rejected]: setErr,
+  [removeItem.pending]: () => null,
 });
 
 const contactReducer = combineReducers({

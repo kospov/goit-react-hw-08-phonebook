@@ -1,36 +1,40 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getItemApi, addItemApi, removeItemApi } from '../../units/mockApi';
-import {
-  getItemRequest,
-  getItemSuccess,
-  getItemError,
-  addItemRequest,
-  addItemSuccess,
-  addItemError,
-  removeItemRequest,
-  removeItemSuccess,
-  removeItemError,
-} from './itemsAction';
 
-export const getItem = () => dispatch => {
-  dispatch(getItemRequest());
+export const getItem = createAsyncThunk('getItem', async (param, thunkApi) => {
+  try {
+    const item = await getItemApi();
+    return item;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.message);
+  }
+});
 
-  getItemApi()
-    .then(item => dispatch(getItemSuccess(item)))
-    .catch(err => dispatch(getItemError(err.message)));
-};
+export const addItem = createAsyncThunk('addItem', async (item, thunkApi) => {
+  try {
+    const newItem = await addItemApi(item);
+    return newItem;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.message);
+  }
+});
 
-export const addItem = item => dispatch => {
-  dispatch(addItemRequest());
+export const removeItem = createAsyncThunk(
+  'removeItem',
+  async (id, thunkApi) => {
+    try {
+      const item = await removeItemApi(id);
+      return item;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err.message);
+    }
+  }
+);
 
-  addItemApi(item)
-    .then(newItem => dispatch(addItemSuccess(newItem)))
-    .catch(err => dispatch(addItemError(err.message)));
-};
+// export const removeItem = id => dispatch => {
+//   dispatch(removeItemRequest());
 
-export const removeItem = id => dispatch => {
-  dispatch(removeItemRequest());
-
-  removeItemApi(id)
-    .then(item => dispatch(removeItemSuccess(item)))
-    .catch(err => dispatch(removeItemError(err.message)));
-};
+//   removeItemApi(id)
+//     .then(item => dispatch(removeItemSuccess(item)))
+//     .catch(err => dispatch(removeItemError(err.message)));
+// };
