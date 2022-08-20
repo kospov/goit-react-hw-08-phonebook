@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addItem } from '../../redux/items/itemsAction';
+import { addItem } from 'redux/items/itemsOperation';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const items = useSelector(state => state.items);
+  const items = useSelector(state => state.contacts.items);
+  const isLoading = useSelector(state => state.contacts.isLoading);
   const dispatch = useDispatch();
 
   const handleChangeInput = e => {
@@ -70,7 +71,7 @@ const ContactForm = () => {
         />
 
         <button type="submit" className={s.formBtn}>
-          Add contact
+          {isLoading ? 'Loading...' : 'Add contact'}
         </button>
       </form>
     </>
