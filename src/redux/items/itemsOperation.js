@@ -30,11 +30,3 @@ export const removeItem = createAsyncThunk(
     }
   }
 );
-
-// export const removeItem = id => dispatch => {
-//   dispatch(removeItemRequest());
-
-//   removeItemApi(id)
-//     .then(item => dispatch(removeItemSuccess(item)))
-//     .catch(err => dispatch(removeItemError(err.message)));
-// };

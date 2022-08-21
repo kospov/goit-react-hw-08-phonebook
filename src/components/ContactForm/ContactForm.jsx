@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addItem } from 'redux/items/itemsOperation';
+import { getItems, getIsLoading } from 'redux/items/itemsSelectors';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const items = useSelector(state => state.contacts.items);
-  const isLoading = useSelector(state => state.contacts.isLoading);
+  const items = useSelector(getItems);
+  const isLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
   const handleChangeInput = e => {

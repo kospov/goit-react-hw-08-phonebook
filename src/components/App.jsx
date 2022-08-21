@@ -5,11 +5,12 @@ import Container from './Container/Container';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactsList from './ContactsList/ContactsList';
+import { getIsContacts } from 'redux/items/itemsSelectors';
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const isContacts = useSelector(state => Boolean(state.contacts.items.length));
+  const isContacts = useSelector(getIsContacts);
 
   useEffect(() => {
     !isContacts && dispatch(getItem());
