@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.navLink {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  color: #2a363b;
+  font-size: 18px;
+}
+
+.navLink:hover {
+text-decoration-line:underline;
+text-decoration-thickness:3px;
+text-decoration-color: #FD779C;
+}
+
+
+.activeLink {
+  color: #FD779C;
+  ;
+}

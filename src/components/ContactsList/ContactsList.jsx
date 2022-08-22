@@ -7,18 +7,21 @@ const ContactsList = () => {
   const contactsArr = useSelector(getContactsArr);
 
   return (
-    <ul className={s.list}>
-      {contactsArr.map(el => {
-        return (
-          <ContactItem
-            key={el.id}
-            name={el.name}
-            id={el.id}
-            number={el.number}
-          />
-        );
-      })}
-    </ul>
+    <>
+      <h2>Contacts</h2>
+      <ul className={s.list}>
+        {contactsArr.map(el => {
+          return (
+            <ContactItem
+              key={el.id}
+              name={el.name}
+              id={el.id}
+              number={el.number}
+            />
+          );
+        })}
+      </ul>
+    </>
   );
 };
 

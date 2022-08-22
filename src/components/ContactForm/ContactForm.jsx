@@ -46,6 +46,7 @@ const ContactForm = () => {
 
   return (
     <>
+      <h1>Phonebook</h1>
       <form className={s.form} onSubmit={handleSubmitClick}>
         <label className={s.formLabel}>Name</label>
         <input

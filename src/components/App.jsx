@@ -1,29 +1,32 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getItem } from '../redux/items/itemsOperation';
-import Container from './Container/Container';
-import ContactForm from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
-import ContactsList from './ContactsList/ContactsList';
-import { getIsContacts } from 'redux/items/itemsSelectors';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getIsAuth } from 'redux/auth/authSelector';
+import Container from '../components/Container/Container';
+import HomePage from '../pages/HomePage';
+import ContactsPage from '../pages/ContactsPage';
+import LoginPage from '../pages/LoginPage';
+import RegisterPage from '../pages/RegisterPage';
 
 const App = () => {
-  const dispatch = useDispatch();
+  const isAuth = useSelector(getIsAuth);
 
-  const isContacts = useSelector(getIsContacts);
-
-  useEffect(() => {
-    !isContacts && dispatch(getItem());
-  }, [dispatch, isContacts]);
-
-  return (
-    <Container>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactsList />
-    </Container>
+  return isAuth ? (
+    <Routes>
+      <Route exact path="/" element={<Container />}>
+        <Route index element={<HomePage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="*" element={<Navigate to="/" />}></Route>
+      </Route>
+    </Routes>
+  ) : (
+    <Routes>
+      <Route exact path="/" element={<Container />}>
+        <Route index element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={<Navigate to="/login" />}></Route>
+      </Route>
+    </Routes>
   );
 };
 

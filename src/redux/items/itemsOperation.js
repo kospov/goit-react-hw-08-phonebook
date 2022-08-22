@@ -1,5 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getItemApi, addItemApi, removeItemApi } from '../../units/mockApi';
+import {
+  getItemApi,
+  addItemApi,
+  removeItemApi,
+} from '../../units/connectionsApi';
 
 export const getItem = createAsyncThunk('getItem', async (param, thunkApi) => {
   try {
